@@ -1,8 +1,10 @@
+import { Collapsible } from "@/components/Collapsible";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 // import Home from "./src/pages/home/Home";
 // import { createDrawerNavigator } from "@react-navigation/drawer";
 // import Albums from "./src/pages/albums/Albums";
@@ -14,7 +16,20 @@ import { StyleSheet, Text } from "react-native";
 export default function App() {
   const { state } = useAuthContext();
 
-  return <Text>qwerty</Text>;
+  return (
+    <Collapsible title="Menu">
+      <Link href="/home" asChild>
+        <Pressable>
+          <Text style={{ color: "#fff" }}>Home</Text>
+        </Pressable>
+      </Link>
+      <Link href="/pages/Posts" asChild>
+        <Pressable>
+          <Text style={{ color: "#fff" }}>User</Text>
+        </Pressable>
+      </Link>
+    </Collapsible>
+  );
 }
 
 const styles = StyleSheet.create({
